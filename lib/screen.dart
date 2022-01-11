@@ -265,6 +265,8 @@ class _ScreenState extends State<Screen> {
                                         all = logic.caesar(input.text, i, 0);
                                         decryptedList.add(all);
                                       }
+                                      result = logic.caesar(
+                                          input.text, int.parse(key.text), 0);
                                     } else if (widget.title ==
                                         "VIGENERE CIPHER") {
                                       result = logic.vigenere(
@@ -321,22 +323,23 @@ class _ScreenState extends State<Screen> {
                       child: widget.title == 'CAESAR CIPHER'
                           ? encryption == true
                               ? SelectableText(result)
-                              : ListView.builder(
-                                  shrinkWrap: true,
-                                  primary: false,
-                                  itemCount: decryptedList.length,
-                                  itemBuilder: (context, index) {
-                                    return Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceAround,
-                                      children: [
-                                        Text(index.toString()),
-                                        SelectableText(
-                                            decryptedList[index].toString()),
-                                      ],
-                                    );
-                                  },
-                                )
+                              : SelectableText(result)
+                          // ListView.builder(
+                          //     shrinkWrap: true,
+                          //     primary: false,
+                          //     itemCount: decryptedList.length,
+                          //     itemBuilder: (context, index) {
+                          //       return Row(
+                          //         mainAxisAlignment:
+                          //             MainAxisAlignment.spaceAround,
+                          //         children: [
+                          //           Text(index.toString()),
+                          //           SelectableText(
+                          //               decryptedList[index].toString()),
+                          //         ],
+                          //       );
+                          //     },
+                          // ),
                           : Container(
                               padding: EdgeInsets.all(10),
                               decoration: BoxDecoration(
